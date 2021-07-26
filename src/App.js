@@ -1,23 +1,29 @@
 import './app.css'
 import Header from './components/Header'
 import {useState} from 'react'
-import Counter from './Counter'
+import Employee from './Employee'
 function App() {
   const [count,setCount] =useState(0)
   const addCount =()=>{
     setCount(count+1)
   }
-  let obj ={
-    title:'1st counter',
-    count
-  }
+  let emp =[{name:'ganesh', age:20},
+    {name:'shogil', age:22},
+    {name:'rahul' ,age:23}
+  ]
 
   return (
     <div>
       <Header/>
       <button onClick={addCount}>Add</button>
-      <Counter {...obj}/>
-      <Counter title='2nd counter' count={count}/>
+      
+      {
+        emp.map((obj)=>{
+          return (
+            <Employee name={obj.name} age={obj.age} />
+          )
+        })
+      }
     
     </div>
   );
